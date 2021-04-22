@@ -1,0 +1,19 @@
+{:deps {nrepl {:mvn/version "0.8.3"}
+        cider/cider-nrepl {:mvn/version "0.25.3" :exclusions [nrepl]}
+        org.eclipse.jetty/jetty-server {:mvn/version "7.6.21.v20160908"}
+        org.eclipse.jetty/jetty-websocket {:mvn/version "7.6.21.v20160908"}
+        org.eclipse.jetty/jetty-servlet {:mvn/version "7.6.21.v20160908"}
+        javax.servlet/javax.servlet-api {:mvn/version "4.0.1"}}
+ 
+ :paths ["src"]
+ ;; Replace path of android.jar 
+ :aliases {:android-15 {:extra-deps {android-15 {:local/root "../../../Android/Sdk/platforms/android-15/android.jar" }}}
+           :android-24 {:extra-deps {android-24 {:local/root "../../../Android/Sdk/platforms/android-24/android.jar" }}}
+           :android-26 {:extra-deps {android-26 {:local/root "../../../Android/Sdk/platforms/android-26/android.jar" }}}
+           :android-29 {:extra-deps {android-29 {:local/root "../../../Android/Sdk/platforms/android-29/android.jar" }}}
+           :jar {:extra-deps {cambada/cambada {:mvn/version "1.0.7"}}
+                 :jvm-opts ["-Xverify:none"]
+                 :main-opts ["-m" "cambada.jar"]}}}
+
+;; Build
+;; clojure -A:jar:android-26  --app-version 1.2.0 --no-copy-source 
